@@ -11,4 +11,3 @@ class QuickScanLite < Formula
   end
 
 end
-
