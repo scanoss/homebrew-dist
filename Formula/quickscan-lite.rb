@@ -9,5 +9,4 @@ class QuickscanLite < Formula
   def install
     bin.install "quickscan-lite-macoss-1.2.4.tar.gz"
   end
-
 end
