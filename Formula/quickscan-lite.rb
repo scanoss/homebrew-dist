@@ -1,4 +1,4 @@
-class QuickScanLite < Formula
+class QuickscanLite < Formula
   desc "Macos UI client for osskb.org"
   homepage "https://github.com/scanoss/quickscan"
   url "(url omitted)"
