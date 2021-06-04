@@ -7,6 +7,6 @@ class QuickscanLite < Formula
   bottle :unneeded
 
   def install
-    bin.install "quickscan-lite-macoss-1.2.4.tar.gz"
+    bin.install "quickscan-lite-macoss"
   end
 end
