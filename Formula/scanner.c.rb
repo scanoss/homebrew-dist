@@ -2,7 +2,7 @@ class ScannerC < Formula
   desc "SCANOSS scanner.c is a simple console-based OSS scanner using the free OSSKB"
   homepage "https://www.scanoss.com"
   url "https://github.com/scanoss/scanner.c/archive/refs/tags/v1.3.4.tar.gz"
-  sha256 "b4cf139968df1588fe7c76dbb255b4bf8fe476ee1d62a6447379db1f7a35cea2"
+  sha256 "59cc37d1d9b3833a5ff3e1fc0d5f57e7231f84f23faf86b77c0d1c6b01d7a2da"
   license "GPL-2.0-or-later"
 
   depends_on "curl"
