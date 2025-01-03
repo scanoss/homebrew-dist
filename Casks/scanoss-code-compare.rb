@@ -2,10 +2,7 @@ cask "scanoss-code-compare" do
     version "0.5.0" # Updated by GitHub Actions
     sha256 "fc9ad388d782b72237468483e8604d48fac711a1cc6a1bf647ab6811ce599f7c" # Updated by GitHub Actions
   
-    url "https://github.com/scanoss/scanoss.cc/releases/download/v#{version}/SCANOSS.Code.Compare-mac.zip",
-      headers: {
-        "Authorization" => "token #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
-      }
+    url "https://github.com/scanoss/scanoss.cc/releases/download/v#{version}/SCANOSS.Code.Compare-mac.zip"
     name "SCANOSS Code Compare"
     desc "GUI and CLI tool for quickly visualizing undeclared open source findings"
     homepage "https://github.com/scanoss/scanoss.cc"
