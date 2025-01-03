@@ -2,15 +2,17 @@ cask "scanoss-code-compare" do
     version "0.5.0" # Updated by GitHub Actions
     sha256 "fc9ad388d782b72237468483e8604d48fac711a1cc6a1bf647ab6811ce599f7c" # Updated by GitHub Actions
   
-    url "https://github.com/scanoss/scanoss.cc/releases/download/v#{version}/SCANOSS.Code.Compare-mac.zip"
+    url "https://github.com/scanoss/scanoss.cc/releases/download/v#{version}/SCANOSS.Code.Compare-mac.zip",
+      headers: {
+        "Authorization" => "token #{ENV["HOMEBREW_GITHUB_API_TOKEN"]}"
+      }
     name "SCANOSS Code Compare"
     desc "GUI and CLI tool for quickly visualizing undeclared open source findings"
     homepage "https://github.com/scanoss/scanoss.cc"
-  
+
     depends_on macos: ">= :catalina"
 
     container nested: "SCANOSS Code Compare-v#{version}.dmg"
-  
     app "SCANOSS Code Compare.app"
   
     # Wrapper script that handles both GUI and CLI modes
@@ -48,7 +50,7 @@ cask "scanoss-code-compare" do
   
     uninstall_postflight do
       # Remove the CLI symlink on uninstall
-      File.rm "#{HOMEBREW_PREFIX}/bin/scanoss-cc" if File.exist? "#{HOMEBREW_PREFIX}/bin/scanoss-cc"
+      FileUtils.rm "#{HOMEBREW_PREFIX}/bin/scanoss-cc" if File.exist? "#{HOMEBREW_PREFIX}/bin/scanoss-cc"
     end
   
     zap trash: [
