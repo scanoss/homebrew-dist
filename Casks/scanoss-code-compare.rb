@@ -20,22 +20,9 @@ cask "scanoss-code-compare" do
       # This wrapper script ensures proper context for both GUI and CLI operations
       File.write shimscript, <<~EOS
         #!/bin/bash
-  
-        # Get the full path to the binary
-        BINARY="#{binary}"
-        APP_DIR="#{appdir}/SCANOSS Code Compare.app/Contents/MacOS"
-  
-        # Change to the correct working directory
-        cd "$APP_DIR"
-  
-        # Check if any arguments were provided
-        if [ $# -eq 0 ]; then
-          # No arguments - launch GUI
-          open -a "SCANOSS Code Compare"
-        else
-          # Arguments provided - run in CLI mode
-          exec "$BINARY" "$@"
-        fi
+
+        # Pass all arguments to the application using macOS's open --args
+        open -a "SCANOSS Code Compare" --args "$@"
       EOS
       
       # Make the wrapper script executable
