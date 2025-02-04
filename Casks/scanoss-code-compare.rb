@@ -21,8 +21,10 @@ cask "scanoss-code-compare" do
       File.write shimscript, <<~EOS
         #!/bin/bash
 
-        # Pass all arguments to the application using macOS's open --args
-        open -a "SCANOSS Code Compare" --args "$@"
+        CURRENT_DIR=$(pwd)
+
+        # We need to pass the current directory, otherwise the app will use the $HOME directory as default scan root
+        open -a "SCANOSS Code Compare" --args --scan-root "$CURRENT_DIR" "$@"
       EOS
       
       # Make the wrapper script executable
