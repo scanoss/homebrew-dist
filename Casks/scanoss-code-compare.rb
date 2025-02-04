@@ -17,14 +17,14 @@ cask "scanoss-code-compare" do
       binary = "#{appdir}/SCANOSS Code Compare.app/Contents/MacOS/SCANOSS Code Compare"
       shimscript = "#{staged_path}/scanoss-cc.wrapper.sh"
       
-      # This wrapper script ensures proper context for both GUI and CLI operations
+      # This wrapper script ensures proper context for both GUI and CLI operations by directly invoking the binary.
       File.write shimscript, <<~EOS
         #!/bin/bash
 
         CURRENT_DIR=$(pwd)
 
-        # We need to pass the current directory, otherwise the app will use the $HOME directory as default scan root
-        open -a "SCANOSS Code Compare" --args --scan-root "$CURRENT_DIR" "$@"
+        # Call the binary directly, passing the current directory so that the app does not default to $HOME
+        "#{binary}" --scan-root "$CURRENT_DIR" "$@"
       EOS
       
       # Make the wrapper script executable
