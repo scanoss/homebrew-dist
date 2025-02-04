@@ -17,20 +17,40 @@ cask "scanoss-code-compare" do
       binary = "#{appdir}/SCANOSS Code Compare.app/Contents/MacOS/SCANOSS Code Compare"
       shimscript = "#{staged_path}/scanoss-cc.wrapper.sh"
       
-      # This wrapper script ensures proper context for both GUI and CLI operations by directly invoking the binary.
       File.write shimscript, <<~EOS
         #!/bin/bash
 
         CURRENT_DIR=$(pwd)
 
-        # Call the binary directly, passing the current directory so that the app does not default to $HOME
-        "#{binary}" --scan-root "$CURRENT_DIR" "$@"
+        # If no arguments are provided, assume scanning mode and add --scan-root.
+        if [ "$#" -eq 0 ]; then
+          exec "#{binary}" --scan-root "$CURRENT_DIR"
+        fi
+
+        # If the first argument starts with a dash, assume scanning options.
+        first_arg="$1"
+        if [[ "$first_arg" == "-"* ]]; then
+          # Check if --scan-root is already provided.
+          found=0
+          for arg in "$@"; do
+            if [ "$arg" = "--scan-root" ]; then
+              found=1
+              break
+            fi
+          done
+          if [ $found -eq 0 ]; then
+            exec "#{binary}" --scan-root "$CURRENT_DIR" "$@"
+          else
+            exec "#{binary}" "$@"
+          fi
+        else
+          # Otherwise, assume subcommand mode and pass arguments as-is.
+          exec "#{binary}" "$@"
+        fi
       EOS
       
-      # Make the wrapper script executable
       FileUtils.chmod "+x", shimscript
       
-      # Create the symlink in a standard location
       FileUtils.ln_sf shimscript, "#{HOMEBREW_PREFIX}/bin/scanoss-cc"
     end
   
