@@ -22,6 +22,12 @@ cask "scanoss-code-compare" do
 
         CURRENT_DIR=$(pwd)
 
+        # Handle version flag directly
+        if [ "$1" = "--version" ] || [ "$1" = "-v" ]; then
+          exec "#{binary}" "$@"
+          exit 0
+        fi
+
         # If no arguments are provided, assume scanning mode and add --scan-root.
         if [ "$#" -eq 0 ]; then
           exec "#{binary}" --scan-root "$CURRENT_DIR"
