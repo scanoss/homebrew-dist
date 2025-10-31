@@ -1,6 +1,6 @@
 cask "scanoss-code-compare" do
-    version "0.9.0-rc.4" # Updated by GitHub Actions
-    sha256 "69164b9512d5418593557e77edb40da2cfd1d97061ae06b73de6ad8174760c8e" # Updated by GitHub Actions
+    version "0.9.0-rc.5" # Updated by GitHub Actions
+    sha256 "43a4f1d1de3bda4618f5c67ffc78e934a121998533c2ead8ee9d2c749de7f5c3" # Updated by GitHub Actions
   
     url "https://github.com/scanoss/scanoss.cc/releases/download/v#{version}/SCANOSS.Code.Compare-mac.zip"
     name "SCANOSS Code Compare"
