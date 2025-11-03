@@ -1,8 +1,8 @@
 cask "scanoss-code-compare" do
     version "0.9.0-rc.9" # Updated by GitHub Actions
     sha256 "7b42cb6ff86a41e4c1aedda83c49028f3e5c918c919da4ad8f49ea825f892008" # Updated by GitHub Actions
-  
-    url "https://github.com/scanoss/scanoss.cc/releases/download/v#{version}/SCANOSS.Code.Compare-mac.zip"
+
+    url "https://github.com/scanoss/scanoss.cc/releases/download/v#{version}/scanoss-cc-mac.zip"
     name "SCANOSS Code Compare"
     desc "GUI and CLI tool for quickly visualizing undeclared open source findings"
     homepage "https://github.com/scanoss/scanoss.cc"
@@ -11,12 +11,12 @@ cask "scanoss-code-compare" do
 
     container nested: "SCANOSS Code Compare-v#{version}.dmg"
     app "SCANOSS Code Compare.app"
-  
+
     # Wrapper script that handles both GUI and CLI modes
     postflight do
       binary = "#{appdir}/SCANOSS Code Compare.app/Contents/MacOS/SCANOSS Code Compare"
       shimscript = "#{staged_path}/scanoss-cc.wrapper.sh"
-      
+
       File.write shimscript, <<~EOS
         #!/bin/bash
 
@@ -54,17 +54,17 @@ cask "scanoss-code-compare" do
           exec "#{binary}" "$@"
         fi
       EOS
-      
+
       FileUtils.chmod "+x", shimscript
-      
+
       FileUtils.ln_sf shimscript, "#{HOMEBREW_PREFIX}/bin/scanoss-cc"
     end
-  
+
     uninstall_postflight do
       # Remove the CLI symlink on uninstall
       FileUtils.rm "#{HOMEBREW_PREFIX}/bin/scanoss-cc" if File.exist? "#{HOMEBREW_PREFIX}/bin/scanoss-cc"
     end
-  
+
     zap trash: [
       "~/Library/Application Support/SCANOSS Code Compare",
       "~/Library/Preferences/com.scanoss.code-compare.plist",
