@@ -7,7 +7,7 @@ cask "scanoss-code-compare" do
   desc "GUI and CLI tool for quickly visualizing undeclared open source findings"
   homepage "https://github.com/scanoss/scanoss.cc"
 
-  depends_on macos: :catalina
+  depends_on :macos
   container nested: "scanoss-cc-v#{version}.dmg"
 
   app "scanoss-cc.app", target: "SCANOSS Code Compare.app"
