@@ -1,7 +1,6 @@
 class Earnie < Formula
   desc "Customer CLI for the Earnie software governance platform"
   homepage "https://github.com/scanoss/earnie-cli"
-  version "0.2.1"
 
   on_macos do
     if Hardware::CPU.arm?
