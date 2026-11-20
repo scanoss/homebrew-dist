@@ -4,21 +4,21 @@ class Earnie < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/scanoss/earnie-cli/releases/download/v0.7.0/earnie_0.7.0_darwin_arm64.tar.gz"
-      sha256 "02fee932c065d89f548a14d2a777349e048c34692fe3f62ed2ed6d2e90c8c12c"
+      url "https://github.com/scanoss/earnie-cli/releases/download/v0.8.0/earnie_0.8.0_darwin_arm64.tar.gz"
+      sha256 "25e24aa5eb75464eb0e7bdc81f09edf48128da61b9578484c1ee6305d197f8cf"
     else
-      url "https://github.com/scanoss/earnie-cli/releases/download/v0.7.0/earnie_0.7.0_darwin_amd64.tar.gz"
-      sha256 "e4a78e1f6eafc78af55e7459d10cafb6dbbc7fbf1c130456159b2df77f79d061"
+      url "https://github.com/scanoss/earnie-cli/releases/download/v0.8.0/earnie_0.8.0_darwin_amd64.tar.gz"
+      sha256 "2ee612ba174a49bd3db2ddd62d3cc2d2e552f21c67a65a421f7178da2c14ccd7"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/scanoss/earnie-cli/releases/download/v0.7.0/earnie_0.7.0_linux_arm64.tar.gz"
-      sha256 "967b240dedb63446e2df91a8f45e324a0ba2f107931a923b7be8c0f303420c46"
+      url "https://github.com/scanoss/earnie-cli/releases/download/v0.8.0/earnie_0.8.0_linux_arm64.tar.gz"
+      sha256 "60568bf800da578402158e76c2dfcc289f2107a9e2a88df881d4443093db45c5"
     else
-      url "https://github.com/scanoss/earnie-cli/releases/download/v0.7.0/earnie_0.7.0_linux_amd64.tar.gz"
-      sha256 "22b1dd4c7dbeb0dd94e1602f1223c0352a12017e3e4099285fe42c6b7921324f"
+      url "https://github.com/scanoss/earnie-cli/releases/download/v0.8.0/earnie_0.8.0_linux_amd64.tar.gz"
+      sha256 "f8fca9160ffc13225946c3f421c6ed27a6b78886f603d0e9c996a403f5667a97"
     end
   end
 
